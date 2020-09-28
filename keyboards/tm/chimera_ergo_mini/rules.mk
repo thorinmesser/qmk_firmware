@@ -1,6 +1,6 @@
 
-OPT_DEFS += -DCHIMERA_ERGO_PROMICRO
-CHIMERA_ERGO_UPLOAD_COMMAND = while [ ! -r $(USB) ]; do sleep 1; done; \
+OPT_DEFS += -DCHIMERA_ERGO_MINI_PROMICRO
+CHIMERA_ERGO_MINI_UPLOAD_COMMAND = while [ ! -r $(USB) ]; do sleep 1; done; \
                          avrdude -p $(MCU) -c avr109 -U flash:w:$(TARGET).hex -P $(USB)
 
 # # project specific files
@@ -52,15 +52,6 @@ BOOTLOADER = caterina
 
 # Interrupt driven control endpoint task(+60)
 OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
-
-# Boot Section Size in *bytes*
-#   Teensy halfKay   512
-#   Teensy++ halfKay 1024
-#   Atmel DFU loader 4096
-#   LUFA bootloader  4096
-#   USBaspLoader     2048
-OPT_DEFS += -DBOOTLOADER_SIZE=4096
-
 
 # Build Options
 #   comment out to disable the options.

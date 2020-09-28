@@ -14,11 +14,14 @@ enum chimera_ortho_layers
 	_NUMPAD,
 	_SYMBOLS,
 	_MACROS,
+	_MOUSE,
 	_NAV
 };
 
 #define KC_NMPD TG(_NUMPAD)
 #define KC_SYMB TG(_SYMBOLS)
+#define KC_SYM2 MO(_SYMBOLS)
+#define KC_MOUS MO(_MOUSE)
 #define KC_SPFN LT(_NAV,KC_EQL)
 #define KC_SCTL MT(MOD_LCTL, KC_LBRC)
 #define KC_SCTR MT(MOD_LCTL, KC_RBRC)
@@ -27,11 +30,9 @@ enum chimera_ortho_layers
 #define KC_GBRC MT(MOD_RGUI, KC_8)
 #define KC_GQOT MT(MOD_LGUI, KC_QUOT)
 #define KC_MESC LT(_MACROS, KC_ESC)
-#define KC_INCL M(0)
-#define KC_PULL M(1)
-#define KC_PUSH M(2)
-#define KC_SCAP M(3)
-#define KC_SCOF M(4)
+#define KC_EML  M(0)
+#define KC_SCAP M(1)
+#define KC_SCOF M(2)
 #define KC_CAD LALT(LCTL(KC_DEL))
 
 #define LONGPRESS_DELAY 150
@@ -46,13 +47,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = KC_KEYMAP(  
   //,----+----+----+----+----+----+----.     ,----+----+----+----+----+----+----.
-     MESC, Q  , W  , E  , R  , T  ,SCTL,      SCTR, Y  , U  , I  , O  , P  ,QUOT,
+     TAB , Q  , W  , E  , R  , T  ,MESC,      MESC, Y  , U  , I  , O  , P  ,QUOT,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-     TAB , A  , S  , D  , F  , G  ,SPLT,      SPRT, H  , J  , K  , L  ,SCLN,ENT ,
+     LSFT, A  , S  , D  , F  , G  ,NMPD,      NMPD, H  , J  , K  , L  ,SCLN,RSFT,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-     LSPO, Z  , X  , C  , V  , B  ,SPFN,      GBRC, N  , M  ,COMM,DOT ,SLSH,RSPC,
+     SYM2, Z  , X  , C  , V  , B  ,MOUS,      SYMB, N  , M  ,COMM,DOT ,SLSH,ENT ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-                         NMPD,BSPC,                SPC ,SYMB
+                         SPFN,SPC ,                SPC ,BSPC
   // \------------------+----+----+---/       \---+----+----+-------------------/
   ),
 
@@ -60,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----+----.     ,----+----+----+----+----+----+----.
          ,    ,    ,    ,    ,    ,    ,          ,    ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,UNDS,          ,    ,    ,    ,    ,COLN,    ,
+         ,    ,    ,    ,    ,    ,    ,          ,    ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
      SCOF,    ,    ,    ,    ,    ,    ,          ,    ,    ,    ,    ,    ,SCOF,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
@@ -70,25 +71,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUMPAD] = KC_KEYMAP(  
   //,----+----+----+----+----+----+----.     ,----+----+----+----+----+----+----.
-         ,    ,COLN ,    ,    ,    ,    ,          ,    , 7  , 8  , 9  ,ASTR,MINS,
+         ,    , 7  , 8  , 9  ,    ,    ,          ,    , 7  , 8  , 9  ,SLSH,ASTR,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-         ,    ,DOT ,    ,    ,    ,    ,          ,    , 4  , 5  , 6  ,PLUS,    ,
+         ,    , 4  , 5  , 6  ,    ,    ,          ,    , 4  , 5  , 6  ,PLUS,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,    ,          ,    , 1  , 2  , 3  ,SLSH,    ,
+         ,    , 1  , 2  , 3  ,    ,    ,          ,    , 1  , 2  , 3  ,MINS,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-                             ,    ,                     , 0  
+                          0  ,    ,                     , 0  
   // \------------------+----+----+---/       \---+----+----+-------------------/
   ),
 
   [_SYMBOLS] = KC_KEYMAP(  
   //,----+----+----+----+----+----+----.     ,----+----+----+----+----+----+----.
-         ,EXLM, AT ,HASH,DLR ,PERC,    ,          ,CIRC,AMPR,ASTR,LPRN,RPRN,BSLS,
+         ,EXLM, AT ,HASH,DLR ,PERC,    ,          ,CIRC,AMPR,ASTR,LPRN,RPRN,TILD,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-         , F1 , F2 , F3 , F4 , F5 ,    ,          ,TILD,COLN,UNDS,LCBR,RCBR,    ,
+         , F1 , F2 , F3 , F4 , F5 ,    ,          ,SCLN,COLN,UNDS,LCBR,RCBR,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-         , F6 , F7 , F8 , F9 ,F10 ,    ,          ,GRV ,SCLN,MINS,LBRC,RBRC,    ,
+         , F6 , F7 , F8 , F9 ,F10 ,    ,          ,SLSH,BSLS,MINS,LBRC,RBRC,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-                         PIPE,    ,                    ,
+                         PIPE,    ,                    ,GRV
   // \------------------+----+----+---/       \---+----+----+-------------------/
   ),
 
@@ -96,23 +97,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----+----+----+----+----+----+----.     ,----+----+----+----+----+----+----.
          ,    ,    ,    ,    ,    ,    ,          ,    ,    , UP ,    ,PSCR,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,    ,          ,    ,LEFT,DOWN,RGHT,    ,    ,
+         ,    ,    ,    ,    ,    ,    ,          ,    ,LEFT,DOWN,RGHT,ENT ,DEL ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,    ,          ,    ,PGUP,PGDN,    ,    ,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-                             ,DEL ,                    ,    
+                             ,    ,                    ,    
   // \------------------+----+----+---/       \---+----+----+-------------------/
   ),
 
   [_MACROS] = KC_KEYMAP(  
   //,----+----+----+----+----+----+----.     ,----+----+----+----+----+----+----.
-         ,    ,    ,    ,    ,    ,    ,          ,    ,    ,INCL,    ,    ,    ,
+         ,    ,    ,    ,    ,    ,    ,          ,    ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-         ,    ,    ,CAD ,    ,    ,    ,          ,    ,    ,    ,    ,    ,    ,
+         ,    ,    ,    ,CAD ,    ,    ,          ,    ,EML ,    ,    ,    ,    ,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
-     SCAP,    ,    ,    ,    ,    ,    ,          ,    ,    ,PULL,PUSH,    ,SCAP,
+     SCAP,    ,    ,    ,    ,    ,    ,          ,    ,    ,    ,    ,    ,SCAP,
   //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
                              ,    ,                    ,    
+  // \------------------+----+----+---/       \---+----+----+-------------------/
+  ),
+
+  [_MOUSE] = KC_KEYMAP(  
+  //,----+----+----+----+----+----+----.     ,----+----+----+----+----+----+----.
+         ,    ,    ,    ,    ,    ,    ,          ,    ,    ,MS_U,    ,    ,    ,
+  //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,    ,          ,    ,MS_L,MS_D,MS_R,    ,    ,
+  //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
+         ,    ,    ,    ,    ,    ,    ,          ,    ,WH_U,WH_D,    ,    ,SCAP,
+  //|----+----+----+----+----+----+----|     |----+----+----+----+----+----+----|
+                             ,    ,                BTN1,BTN2
   // \------------------+----+----+---/       \---+----+----+-------------------/
   )
 
@@ -129,30 +142,18 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
     /* include some kind of library or header */
     case 0:
       if (record->event.pressed) {
-        SEND_STRING("#include <>");
+        SEND_STRING("email.address@gmail.com");
         return MACRO( T(LEFT), END);
       }
       break;
     case 1:
-      if (record->event.pressed) {
-        SEND_STRING("git pull");
-        return MACRO( T(ENT), END );
-      }
-      break;
-    case 2:
-      if (record->event.pressed){
-        SEND_STRING("git push");
-        return MACRO( T(ENT), END );
-      }
-      break;
-    case 3:
       if (record->event.pressed){
         layer_on(_CAPS);
         register_code(KC_CAPSLOCK);
         unregister_code(KC_CAPSLOCK);
       }
       break;
-    case 4:
+    case 2:
       if (record->event.pressed){
         layer_off(_CAPS);
         register_code(KC_CAPSLOCK);

@@ -1,6 +1,6 @@
 
-OPT_DEFS += -DCHIMERA_ERGO_PROMICRO
-CHIMERA_ERGO_UPLOAD_COMMAND = while [ ! -r $(USB) ]; do sleep 1; done; \
+OPT_DEFS += -DCHIMERA_ORTHO_PLUS_PROMICRO
+CHIMERA_ORTHO_PLUS_UPLOAD_COMMAND = while [ ! -r $(USB) ]; do sleep 1; done; \
                          avrdude -p $(MCU) -c avr109 -U flash:w:$(TARGET).hex -P $(USB)
 
 # # project specific files

@@ -1,4 +1,4 @@
-#include "chimera_ergo.h"
+#include "chimera_ergo_42.h"
 
 void uart_init(void) {
 	SERIAL_UART_INIT();
